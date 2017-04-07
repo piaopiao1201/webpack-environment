@@ -20,11 +20,7 @@ if (isDev) {
         webpackDevMiddleware = require('webpack-dev-middleware'),
         webpackHotMiddleware = require('webpack-hot-middleware'),
         webpackDevConfig = require('./webpack.dev.config.js');
-    // var devClient = './dev-client';
-    // Object.keys(webpackDevConfig.entry).forEach(function (name, i) {
-    // var extras = [devClient]
-    // webpackDevConfig.entry[name] = extras.concat(webpackDevConfig.entry[name])
-    // })
+    
     var compiler = webpack(webpackDevConfig);
 
     // attach to the compiler & the server
@@ -49,7 +45,6 @@ if (isDev) {
         console.log('事件已经发送');
     })
     })
-    // require('./server/routes')(app);
 
     // add "reload" to express, see: https://www.npmjs.com/package/reload
     var reload = require('reload');
@@ -57,18 +52,7 @@ if (isDev) {
 
     var server = http.createServer(app);
     reload(server, app);
-    //  var bs = require('browser-sync').create();
-    // app.listen(port, function(){
-    //     bs.init({
-    //         open: false,
-    //         ui: false,
-    //         notify: false,
-    //         proxy: 'localhost:3000',
-    //         files: ['./www/index.html'],
-    //         port: 3000
-    //     })
-    //     console.log('App (dev) is going to be running on port 8080 (by browsersync).');
-    // });
+    
     server.listen(port, function(){
         console.log('App (dev) is now running on port 3000!');
     });
@@ -76,21 +60,11 @@ if (isDev) {
 
     // static assets served by express.static() for production
     app.use(express.static(path.join(__dirname, 'public')));
-    // require('./server/routes')(app);
     app.listen(port, function () {
         console.log('App (production) is now running on port 3000!');
     });
 }
 
 app.use(express.static(path.join(__dirname, 'www')));
-// var io=require('socket.io').listen(server);
-// app.get('/',function(req,res){
-//   res.sendFile('./www/index.html');
-// });
+
 app.use('/',require('./www/server/route.js'));
-// io.on('connect',function(socket){
-//     console.log('已经连接');
-//     socket.on('say',function(data){
-//         console.log(data);
-//     })
-// })
