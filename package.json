@@ -1,10 +1,10 @@
 {
-  "name": "express-webpack-full-live-reload-example",
+  "name": "webpack-environment",
   "version": "1.0.0",
-  "description": "A workflow with full live reload for webpack&express application.",
+  "description": "establiash the environment by webpack",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kenanpengyou/express-webpack-full-live-reload-example.git"
+    "url": "https://github.com/piaopiao1201/webpack-environment.git"
   },
   "author": "liangzhu",
   "main": "app.js",
